@@ -1,0 +1,123 @@
+GAL22V10       ; Device name
+hex-to-7seg-dual
+
+Clock D1  C1  B1  A1  D2  C2  B2  A2  NC     NC     GND
+NC    NC  SA  SB  SC  SD  SE  SF  SG  DISP1  DISP2  VCC
+
+/SA =     /D1 * /C1 * /B1 *  A1 *  Clock
+        + /D1 *  C1 * /B1 * /A1 *  Clock
+        +  D1 * /C1 *  B1 *  A1 *  Clock
+        +  D1 *  C1 * /B1 *  A1 *  Clock
+        + /D2 * /C2 * /B2 *  A2 * /Clock
+        + /D2 *  C2 * /B2 * /A2 * /Clock
+        +  D2 * /C2 *  B2 *  A2 * /Clock
+        +  D2 *  C2 * /B2 *  A2 * /Clock
+
+/SB =     /D1 *  C1 * /B1 *  A1 *  Clock
+        + /D1 *  C1 *  B1 * /A1 *  Clock
+        +  D1 * /C1 *  B1 *  A1 *  Clock
+        +  D1 *  C1 * /B1 * /A1 *  Clock
+        +  D1 *  C1 *  B1 * /A1 *  Clock
+        +  D1 *  C1 *  B1 *  A1 *  Clock
+        + /D2 *  C2 * /B2 *  A2 * /Clock
+        + /D2 *  C2 *  B2 * /A2 * /Clock
+        +  D2 * /C2 *  B2 *  A2 * /Clock
+        +  D2 *  C2 * /B2 * /A2 * /Clock
+        +  D2 *  C2 *  B2 * /A2 * /Clock
+        +  D2 *  C2 *  B2 *  A2 * /Clock
+
+/SC =     /D1 * /C1 *  B1 * /A1 *  Clock
+        +  D1 *  C1 * /B1 * /A1 *  Clock
+        +  D1 *  C1 *  B1 * /A1 *  Clock
+        +  D1 *  C1 *  B1 *  A1 *  Clock
+        + /D2 * /C2 *  B2 * /A2 * /Clock
+        +  D2 *  C2 * /B2 * /A2 * /Clock
+        +  D2 *  C2 *  B2 * /A2 * /Clock
+        +  D2 *  C2 *  B2 *  A2 * /Clock
+
+/SD =     /D1 * /C1 * /B1 *  A1 *  Clock
+        + /D1 *  C1 * /B1 * /A1 *  Clock
+        + /D1 *  C1 *  B1 *  A1 *  Clock
+        +  D1 * /C1 *  B1 * /A1 *  Clock
+        +  D1 *  C1 *  B1 *  A1 *  Clock
+        + /D2 * /C2 * /B2 *  A2 * /Clock
+        + /D2 *  C2 * /B2 * /A2 * /Clock
+        + /D2 *  C2 *  B2 *  A2 * /Clock
+        +  D2 * /C2 *  B2 * /A2 * /Clock
+        +  D2 *  C2 *  B2 *  A2 * /Clock
+
+/SE =     /D1 * /C1 * /B1 *  A1 *  Clock
+        + /D1 * /C1 *  B1 *  A1 *  Clock
+        + /D1 *  C1 * /B1 * /A1 *  Clock
+        + /D1 *  C1 * /B1 *  A1 *  Clock
+        + /D1 *  C1 *  B1 *  A1 *  Clock
+        +  D1 * /C1 * /B1 *  A1 *  Clock
+        + /D2 * /C2 * /B2 *  A2 * /Clock
+        + /D2 * /C2 *  B2 *  A2 * /Clock
+        + /D2 *  C2 * /B2 * /A2 * /Clock
+        + /D2 *  C2 * /B2 *  A2 * /Clock
+        + /D2 *  C2 *  B2 *  A2 * /Clock
+        +  D2 * /C2 * /B2 *  A2 * /Clock
+
+/SF =     /D1 * /C1 * /B1 *  A1 *  Clock
+        + /D1 * /C1 *  B1 * /A1 *  Clock
+        + /D1 * /C1 *  B1 *  A1 *  Clock
+        + /D1 *  C1 *  B1 *  A1 *  Clock
+        +  D1 *  C1 * /B1 *  A1 *  Clock
+        + /D2 * /C2 * /B2 *  A2 * /Clock
+        + /D2 * /C2 *  B2 * /A2 * /Clock
+        + /D2 * /C2 *  B2 *  A2 * /Clock
+        + /D2 *  C2 *  B2 *  A2 * /Clock
+        +  D2 *  C2 * /B2 *  A2 * /Clock
+
+/SG =     /D1 * /C1 * /B1 * /A1 *  Clock
+        + /D1 * /C1 * /B1 *  A1 *  Clock
+        + /D1 *  C1 *  B1 *  A1 *  Clock
+        +  D1 *  C1 * /B1 * /A1 *  Clock
+        + /D2 * /C2 * /B2 * /A2 * /Clock
+        + /D2 * /C2 * /B2 *  A2 * /Clock
+        + /D2 *  C2 *  B2 *  A2 * /Clock
+        +  D2 *  C2 * /B2 * /A2 * /Clock
+
+DISP1 = Clock
+DISP2 = /Clock
+
+DESCRIPTION:
+
+Dual 4-bit input to hexademical 7-segment decoder.
+
+Clock is used to alternate between inputs and displays.
+
+By Robert Belleman.
+
+  AAAAA  
+ F     B 
+ F     B 
+  GGGGG  
+ E     C 
+ E     C 
+  DDDDD  
+
+Truth table:
++---------------+-----------------+-----------------+
+| Binary Inputs | Decoder Outputs | 7-Segment       |
+| D C B A       | a b c d e f g   | Display Outputs |
++---------------+-----------------+-----------------+
+| 0 0 0 0       | 1 1 1 1 1 1 0   | 0               |
+| 0 0 0 1       | 0 1 1 0 0 0 0   | 1               |
+| 0 0 1 0       | 1 1 0 1 1 0 1   | 2               |
+| 0 0 1 1       | 1 1 1 1 0 0 1   | 3               |
+| 0 1 0 0       | 0 1 1 0 0 1 1   | 4               |
+| 0 1 0 1       | 1 0 1 1 0 1 1   | 5               |
+| 0 1 1 0       | 1 0 1 1 1 1 1   | 6               |
+| 0 1 1 1       | 1 1 1 0 0 0 0   | 7               |
+| 1 0 0 0       | 1 1 1 1 1 1 1   | 8               |
+| 1 0 0 1       | 1 1 1 1 0 1 1   | 9               |
+| 1 0 1 0       | 1 1 1 0 1 1 1   | A               |
+| 1 0 1 1       | 0 0 1 1 1 1 1   | b               |
+| 1 1 0 0       | 1 0 0 1 1 1 0   | C               |
+| 1 1 0 1       | 0 1 1 1 1 0 1   | d               |
+| 1 1 1 0       | 1 0 0 1 1 1 1   | E               |
+| 1 1 1 1       | 1 0 0 0 1 1 1   | F               |
++---------------+-----------------+-----------------+
+
